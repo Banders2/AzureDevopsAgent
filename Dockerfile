@@ -25,9 +25,7 @@ WORKDIR /azp
 # Download helm https://github.com/helm/helm/blob/master/docs/install.md
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.16.0/bin/linux/amd64/kubectl
 RUN curl -L https://git.io/get_helm.sh | bash
-RUN ls
-ADD ["./kubectl", "./helm", "/usr/local/bin/"]
-RUN mv -t /usr/local/bin/ ./helm ./kubectl
+RUN mv ./kubectl /usr/local/bin/
 RUN chmod +x /usr/local/bin/helm
 
 COPY ./start.sh .
