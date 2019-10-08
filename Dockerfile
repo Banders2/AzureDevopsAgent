@@ -16,16 +16,18 @@ RUN apt-get update \
         libicu55 \
         libunwind8 \
         netcat \
-        kubectl
+        zip \
+        unzip
 
 WORKDIR /azp
 
 # Download kubectl https://kubernetes.io/docs/tasks/tools/install-kubectl/
 # Download helm https://github.com/helm/helm/blob/master/docs/install.md
-ADD ["./kubectl", "./helm", "/usr/local/bin/"]
+RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.16.0/bin/linux/amd64/kubectl
 RUN curl -L https://git.io/get_helm.sh | bash
 RUN ls
-RUN mv ./helm /usr/local/bin/
+ADD ["./kubectl", "./helm", "/usr/local/bin/"]
+RUN mv -t /usr/local/bin/ ./helm ./kubectl
 RUN chmod +x /usr/local/bin/helm
 
 COPY ./start.sh .
