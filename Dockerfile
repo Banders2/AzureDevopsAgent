@@ -17,8 +17,10 @@ RUN apt-get update \
         libunwind8 \
         netcat \
         zip \
-        unzip
-
+        unzip \
+        software-properties-common
+        
+RUN apt-get update
 RUN add-apt-repository ppa:git-core/ppa -y \
         && apt-get update \
         && apt-get install git -y
