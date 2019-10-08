@@ -17,8 +17,11 @@ RUN apt-get update \
         libunwind8 \
         netcat \
         zip \
-        unzip \
-        git
+        unzip
+
+RUN add-apt-repository ppa:git-core/ppa -y \
+        && apt-get update \
+        && apt-get install git -y
 
 WORKDIR /azp
 
