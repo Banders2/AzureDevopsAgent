@@ -17,7 +17,8 @@ RUN apt-get update \
         libunwind8 \
         netcat \
         zip \
-        unzip
+        unzip \
+        git
 
 WORKDIR /azp
 
