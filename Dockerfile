@@ -26,9 +26,7 @@ WORKDIR /azp
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.16.0/bin/linux/amd64/kubectl
 RUN curl -L https://git.io/get_helm.sh | bash
 RUN mv ./kubectl /usr/local/bin/
-RUN chmod +x /usr/local/bin/helm
-
 COPY ./start.sh .
-RUN chmod +x start.sh
+RUN chmod +x /usr/local/bin/helm /usr/local/bin/kubectl start.sh
 
 CMD ["./start.sh"]
